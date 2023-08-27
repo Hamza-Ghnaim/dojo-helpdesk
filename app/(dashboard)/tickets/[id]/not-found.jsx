@@ -1,6 +1,6 @@
 import Link from "next/link";   
 
-export default function NoFound(){
+export default function NotFound(){
     return(
         <main className="text-center">
             <h2 className="text-3xl">We hit a Brick Wall</h2>

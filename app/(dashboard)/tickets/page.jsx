@@ -1,6 +1,6 @@
 import TicketList from "./TicketList";
 import { Suspense } from "react";
-import loading from "../loading";
+import Loading from "../Loading";
 
 export const metadata = {
   title: 'Dojo Helpdesk | Tickets'
@@ -15,7 +15,7 @@ export default function Tickets() {
           <p><small>Currently open tickets.</small></p>
         </div>
       </nav>
-      <Suspense fallback={<loading />}>
+      <Suspense fallback={<Loading />}>
         <TicketList/>
       </Suspense>
     </main>

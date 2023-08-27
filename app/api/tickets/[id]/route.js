@@ -1,18 +1,15 @@
-import { NextResponse } from "next/server";
+import { cookies } from 'next/headers'
+import { NextResponse } from 'next/server'
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 
-export const dynamic = "force-dynamic";
+export async function DELETE(_, { params }) {
+  const id = params.id
 
-export async function GET(_,{params}){
-    const id = params.id;
-    const res = await fetch(`http://localhost:4000/tickets/${id}`);
-    const ticket = await res.json();
+  const supabase = createRouteHandlerClient({ cookies })
 
-    if (!res.ok) {
-        return NextResponse.json({error:"Cannot find ticket"},{
-            status:400
-        });
-    }
-    return NextResponse.json(ticket,{
-        status:200
-    })
+  const { error } = await supabase.from('Tickets')
+    .delete()
+    .eq('id', id)
+
+  return NextResponse.json({ error })
 }
