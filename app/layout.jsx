@@ -4,6 +4,8 @@ import { Rubik } from 'next/font/google'
 // components
 import Navbar from './components/Navbar'
 
+export const dynamic = "force-dynamic"
+
 const rubik = Rubik({ subsets: ['latin'] })
 
 export const metadata = {
